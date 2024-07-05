@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    labels:
+      - "nginx.frontend=true"
+    expose:
+      - 80
+
+  backend:
+    build: ./backend
+    labels:
+      - "nginx.backend=true"
+    expose:
+      - 8000
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: youruser
+      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_DB: yourdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    labels:
+      - "nginx.adminer=true"
+    ports:
+      - "8080:8080"
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      # - "80:80"
+      # - "443:443"
+      - 8090:81
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+volumes:
+  postgres_data:
