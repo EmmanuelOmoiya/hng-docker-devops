@@ -67,6 +67,8 @@ services:
     build: ./frontend
     container_name: react_frontend
     restart: unless-stopped
+    depends_on:
+      - backend
 
   backend:
     build: ./backend
