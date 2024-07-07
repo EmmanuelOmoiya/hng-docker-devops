@@ -103,6 +103,10 @@ services:
       - data:/data
       - letsencrypt:/etc/letsencrypt
     restart: unless-stopped
+    depends_on:
+      - backend
+      - frontend
+      - adminer
 
 volumes:
   postgres_data:
