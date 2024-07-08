@@ -11,7 +11,7 @@ RUN npm install
 
 COPY ./ /app/
 
-ARG VITE_API_URL=${VITE_API_URL}
+ARG VITE_API_URL=/api
 
 RUN npm run build
 
