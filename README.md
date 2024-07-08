@@ -2,6 +2,16 @@
 
 Welcome to the Full-Stack FastAPI and React template repository. This repository serves as a demo application for interns, showcasing how to set up and run a full-stack application with a FastAPI backend and a ReactJS frontend using ChakraUI.
 
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Manual Deployment](#manual-deployment)
+- [Docker Deployment](#docker-deployment)
+- [Proxy Configuration](#proxy-configuration)
+- [Database Configuration](#database-configuration)
+- [Adminer Setup](#adminer-setup)
+- [Cloud Deployment](#cloud-deployment)
+- [Additional Information](#additional-information)
+
 ## Project Structure
 
 The repository is organized into two main directories:
