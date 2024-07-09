@@ -1,3 +1,4 @@
+# Use the latest official Python image as a base
 FROM python:latest
 
 # Install Node.js and npm
@@ -8,19 +9,17 @@ RUN apt-get update && apt-get install -y \
 # Install Poetry using pip
 RUN pip install poetry
 
-WORKDIR /code/
+# Set the working directory
+WORKDIR /app
 
-# Copy only the necessary files
-COPY ./pyproject.toml ./poetry.lock* /code/
+# Copy the application files
+COPY . .
 
-# Install dependencies
+# Install dependencies using Poetry
 RUN poetry install
 
-# Copy the rest of the application
-COPY . /code/
-
-# Expose the application port
+# Expose the port FastAPI runs on
 EXPOSE 8000
 
 # Run the prestart script and start the server
-CMD ["sh", "-c", "poetry run bash ./prestart.sh && poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+CMD ["sh", "-c", "poetry run bash ./prestart.sh && poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"]
