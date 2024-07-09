@@ -1,4 +1,4 @@
-FROM node:14-alpine 
+FROM node:20
 
 WORKDIR /app
 
@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 5173
 
-CMD ["npm", "run", "dev", "--", "host"]
+CMD ["npm", "run", "dev", "--", "--host"]
